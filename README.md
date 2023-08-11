@@ -1,4 +1,4 @@
-<h1 align=center>ETEC199-2023-SE</h1>
+<h1 align=center>ETEC199-2023-SE-AUTOMOBILISMO</h1>
 
 <p align="center">
   <img src="etec.png" width="500">
@@ -7,23 +7,8 @@
 #
 ### SOBRE
 
-- Diretório contendo desenvolvimento dos exercícios na disciplina de Sistemas Embarcados(SE) na Etec Cidade Tiradentes em 2023.
-- Possui pequenos projetos submetidos como proposta de solução, com o intuito de atender aos requisitos solicitados.
-
-#
-### CONTEUDO ABORDADO
-
-- *C++*:
-  - Tipos de Dados Primitivos;
-  - *Operadores*: Aritmeticos, Relacionais, Atribuição e Lógicos;
-  - *Estrutura de Decisão*: IF, ELSE, ELSE IF, SWITCH;
-  - Metodos. Classes e Objetos;
-  - Identificação e Tratamento de Exceções;
-
-- *ARDUINO*:
-  - Componentes e Interacoes;
-  - Estrutura de Hardware e Manipulacao.
-
+- Diretório contendo desenvolvimento de projetos competitivos na disciplina de Sistemas Embarcados(SE) na Etec Cidade Tiradentes em 2023.
+- 
 #
 ### TECNOLOGIAS
 
@@ -34,5 +19,5 @@
 ### CONTRIBUIÇÃO
 
 ```
-$ git clone https://github.com/kaiquesouzasantos/etec199-2023-se.git 
+$ git clone https://github.com/kaiquesouzasantos/etec199-2023-se-projeto-automobilistico.git 
 ```

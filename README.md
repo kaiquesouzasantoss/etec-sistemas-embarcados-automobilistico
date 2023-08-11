@@ -8,7 +8,7 @@
 ### SOBRE
 
 - Diretório contendo desenvolvimento de projetos competitivos na disciplina de Sistemas Embarcados(SE) na Etec Cidade Tiradentes em 2023.
-- 
+
 #
 ### TECNOLOGIAS
 

@@ -10,6 +10,13 @@
 - Diretório contendo desenvolvimento de projetos competitivos na disciplina de Sistemas Embarcados(SE) na Etec Cidade Tiradentes em 2023.
 
 #
+### EQUIPE
+
+- [Henry de Oliveira Modesto de Jesus](https://github.com/HenryModesto)
+- [Kaique Souza Santos](https://github.com/kaiquesouzasantos)
+- [Kauan Gabriel Franca Rodrigues](https://github.com/Kauan-Ts11)
+
+#
 ### TECNOLOGIAS
 
 ![C++](https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)&nbsp;

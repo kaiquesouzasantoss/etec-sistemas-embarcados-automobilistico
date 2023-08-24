@@ -94,7 +94,10 @@ void resetSeta(int led) {
 /* BUSINA */
 
 void busina() {
-    tone(BUZZER, 1000);
+    tone(BUZZER, 700);
+    delay(200);
+    noTone(BUZZER);
+    tone(BUZZER, 700);
     delay(200);
     noTone(BUZZER);
 }

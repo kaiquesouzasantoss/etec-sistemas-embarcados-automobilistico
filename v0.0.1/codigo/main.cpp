@@ -1,18 +1,7 @@
 #include <Servo.h>
 #include <Ultrasonic.h>
 
-const int 
-    TRIGGER = 13,
-    ECHO = 12,
-    SERVO = 11,
-    MOTOR_A1 = 7,
-    MOTOR_A2 = 6,
-    MOTOR_B1 = 5,
-    MOTOR_B2 = 4
-    LED_DIREITA = 8,
-    LED_ESQUERDA = 9,
-    BUZZER = 10;
-
+const int TRIGGER = 13, ECHO = 12,PORTA_SERVO = 11,MOTOR_A1 = 7,MOTOR_A2 = 6,MOTOR_B1 = 5,MOTOR_B2 = 4,LED_DIREITA = 8,LED_ESQUERDA = 9,BUZZER = 10;
 const int velocidade = 255, angulo_direita = 160, angulo_esquerda = 60, angulo_central = 105;
 
 Servo servo;
@@ -29,7 +18,7 @@ void setup() {
     pinMode(BUZZER, OUTPUT);
 
     Serial.begin(9600);
-    servo.attach(SERVO);
+    servo.attach(PORTA_SERVO);
 }
 
 void loop() {
@@ -58,14 +47,14 @@ void direita() {
     seta(LED_DIREITA);
     motor(velocidade,0,velocidade,0,angulo_direita);
     delay(1000);
-    resetSeta();
+    resetSeta(LED_DIREITA);
 }
 
 void esquerda() {
     seta(LED_ESQUERDA);
     motor(velocidade,0,velocidade,0,angulo_esquerda);
     delay(1000);
-    resetSeta();
+    resetSeta(LED_ESQUERDA);
 }
 
 void frente() {
@@ -93,26 +82,26 @@ void resetFarol() {
     resetSeta(LED_ESQUERDA);
 }
 
-void seta(led) {
+void seta(int led) {
     resetFarol(); 
     digitalWrite(led, HIGH);
 }
 
-void resetSeta(led) {
+void resetSeta(int led) {
     digitalWrite(led, LOW);
 }
 
 /* BUSINA */
 
 void busina() {
-    digitalWrite(BUZZER, HIGH);
+    tone(BUZZER, 1000);
     delay(200);
-    digitalWrite(BUZZER, LOW);
+    noTone(BUZZER);
 }
 
 /* MOTOR */
 
-void motor(motorA1, motorA2, motorB1, motorB2, angulo) {
+void motor(int motorA1, int motorA2, int motorB1, int motorB2, int angulo) {
     analogWrite(MOTOR_A1, motorA1);
     analogWrite(MOTOR_A2, motorA2);
     analogWrite(MOTOR_B1, motorB1);

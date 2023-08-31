@@ -1,10 +1,9 @@
-#include <Servo.h>
 #include <Ultrasonic.h>
 
-const int TRIGGER = 13, ECHO = 12,PORTA_SERVO = 11,MOTOR_A1 = 7,MOTOR_A2 = 6,MOTOR_B1 = 5,MOTOR_B2 = 4,LED_DIREITA = 8,LED_ESQUERDA = 9,BUZZER = 10;
-const int velocidade = 255, angulo_direita = 160, angulo_esquerda = 60, angulo_central = 105;
+const int TRIGGER = 13, ECHO = 12, MOTOR_A1 = 7, MOTOR_A2 = 6, MOTOR_B1 = 5, MOTOR_B2 = 4, LED_DIREITA = 8, LED_ESQUERDA = 9, BUZZER = 10;
+const int velocidade = 255;
+int obstaculos = 0;
 
-Servo servo;
 Ultrasonic ultrasonic(TRIGGER, ECHO);
 
 void setup() {
@@ -18,15 +17,16 @@ void setup() {
     pinMode(BUZZER, OUTPUT);
 
     Serial.begin(9600);
-    servo.attach(PORTA_SERVO);
+
+    cavaloPau();
 }
 
 void loop() {
     double obstaculo = ultrasonic.read();
 
     if (obstaculo <= 5) {
-        busina();
         direita();
+        busina();
         esquerda();
     }else if(obstaculo > 5 && obstaculo <= 10) {
         direita();
@@ -39,35 +39,49 @@ void loop() {
     } else {
         frente();
     }
+
+    obstaculo();
+}
+
+void obstaculo() {
+    if(obstaculos == 10) {
+        cavaloPau();
+        obstaculos = 0;
+    } 
 }
 
 /* MOVIMENTACAO */
 
 void direita() {
     seta(LED_DIREITA);
-    motor(velocidade,0,velocidade,0,angulo_direita);
+    motor(1,0,0,0);
     delay(1000);
     resetSeta(LED_DIREITA);
 }
 
 void esquerda() {
     seta(LED_ESQUERDA);
-    motor(velocidade,0,velocidade,0,angulo_esquerda);
+    motor(0,0,1,0);
     delay(1000);
     resetSeta(LED_ESQUERDA);
 }
 
 void frente() {
-    motor(velocidade,0,velocidade,0,angulo_central);
+    motor(1,0,1,0);
     farol();
 }
 
 void atras() {
-    motor(0,velocidade,0,velocidade, angulo_central);
+    motor(0,1,0,1);
 }
 
 void para() {
-    motor(0,0,0,0,angulo_central);
+    motor(0,0,0,0);
+}
+
+void cavaloPau() {
+    motor(1,0,0,0);
+    delay(5000);
 }
 
 /* FAROL */
@@ -104,11 +118,11 @@ void busina() {
 
 /* MOTOR */
 
-void motor(int motorA1, int motorA2, int motorB1, int motorB2, int angulo) {
-    analogWrite(MOTOR_A1, motorA1);
-    analogWrite(MOTOR_A2, motorA2);
-    analogWrite(MOTOR_B1, motorB1);
-    analogWrite(MOTOR_B2, motorB2);
+void motor(int motorA1, int motorA2, int motorB1, int motorB2) {
+    digitalWrite(MOTOR_A1, motorA1);
+    digitalWrite(MOTOR_A2, motorA2);
+    digitalWrite(MOTOR_B1, motorB1);
+    digitalWrite(MOTOR_B2, motorB2);
 
-    servo.write(angulo);
+    obstaculos += 1;
 }

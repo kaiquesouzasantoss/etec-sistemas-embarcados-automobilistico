@@ -40,10 +40,10 @@ void loop() {
         frente();
     }
 
-    obstaculo();
+    verifica_obstaculo();
 }
 
-void obstaculo() {
+void verifica_obstaculo() {
     if(obstaculos == 10) {
         cavaloPau();
         obstaculos = 0;

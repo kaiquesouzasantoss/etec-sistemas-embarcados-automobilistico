@@ -1,6 +1,6 @@
 #include <Ultrasonic.h>
 
-const int TRIGGER = 13, ECHO = 12, MOTOR_A1 = 7, MOTOR_A2 = 6, MOTOR_B1 = 5, MOTOR_B2 = 4, LED_DIREITA = 8, LED_ESQUERDA = 9, BUZZER = 10;
+const int TRIGGER = 13, ECHO = 12, BUZZER = 10, LED_ESQUERDA = 9, LED_DIREITA = 8, MOTOR_A1 = 7, MOTOR_A2 = 6, MOTOR_B1 = 5, MOTOR_B2 = 4, FAROL = 3;
 const int velocidade = 255;
 int obstaculos = 0;
 
@@ -15,10 +15,9 @@ void setup() {
     pinMode(LED_DIREITA, OUTPUT);
     pinMode(LED_ESQUERDA, OUTPUT);
     pinMode(BUZZER, OUTPUT);
+    pinMode(FAROL, OUTPUT);
 
-    Serial.begin(9600);
-
-    cavaloPau();
+    digitalWrite(FAROL, HIGH);
 }
 
 void loop() {
@@ -68,7 +67,6 @@ void esquerda() {
 
 void frente() {
     motor(1,0,1,0);
-    farol();
 }
 
 void atras() {
@@ -109,10 +107,10 @@ void resetSeta(int led) {
 
 void busina() {
     tone(BUZZER, 700);
-    delay(200);
+    delay(500);
     noTone(BUZZER);
     tone(BUZZER, 700);
-    delay(200);
+    delay(500);
     noTone(BUZZER);
 }
 

@@ -26,20 +26,12 @@ void loop() {
     if (obstaculo <= 5) {
         direita();
         busina();
+    } else if(obstaculo > 5 && obstaculo <= 10) {
         esquerda();
-    }else if(obstaculo > 5 && obstaculo <= 10) {
-        direita();
-        direita();
-    } else if(obstaculo > 10 && obstaculo <= 15) {
-        esquerda();
-    } else if(obstaculo > 15 && obstaculo <= 25) {
-        direita();
-        direita();
-    } else {
-        frente();
     }
+    frente();
 
-    verifica_obstaculo();
+    //verifica_obstaculo();
 }
 
 void verifica_obstaculo() {
@@ -53,24 +45,24 @@ void verifica_obstaculo() {
 
 void direita() {
     seta(LED_DIREITA);
-    motor(1,0,0,0);
+    motor(0,1,0,0);
     delay(1000);
     resetSeta(LED_DIREITA);
 }
 
 void esquerda() {
     seta(LED_ESQUERDA);
-    motor(0,0,1,0);
+    motor(0,0,0,1);
     delay(1000);
     resetSeta(LED_ESQUERDA);
 }
 
 void frente() {
-    motor(1,0,1,0);
+    motor(0,1,0,1);
 }
 
 void atras() {
-    motor(0,1,0,1);
+    motor(1,0,1,0);
 }
 
 void para() {
@@ -107,10 +99,9 @@ void resetSeta(int led) {
 
 void busina() {
     tone(BUZZER, 700);
-    delay(500);
     noTone(BUZZER);
-    tone(BUZZER, 700);
     delay(500);
+    tone(BUZZER, 700);
     noTone(BUZZER);
 }
 

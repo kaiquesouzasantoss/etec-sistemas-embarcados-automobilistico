@@ -23,15 +23,15 @@ void setup() {
 void loop() {
     double obstaculo = ultrasonic.read();
 
-    if (obstaculo <= 5) {
-        direita();
+    if (obstaculo <= 10) {
+        atras();
         busina();
-    } else if(obstaculo > 5 && obstaculo <= 10) {
+        direita();
+    } else if(obstaculo > 10 && obstaculo <= 20) {
         esquerda();
     }
+    
     frente();
-
-    //verifica_obstaculo();
 }
 
 void verifica_obstaculo() {
@@ -45,14 +45,14 @@ void verifica_obstaculo() {
 
 void direita() {
     seta(LED_DIREITA);
-    motor(0,1,0,0);
+    motor(1,0,0,0);
     delay(1000);
     resetSeta(LED_DIREITA);
 }
 
 void esquerda() {
     seta(LED_ESQUERDA);
-    motor(0,0,0,1);
+    motor(0,0,1,0);
     delay(1000);
     resetSeta(LED_ESQUERDA);
 }
@@ -63,6 +63,7 @@ void frente() {
 
 void atras() {
     motor(1,0,1,0);
+    delay(1000);
 }
 
 void para() {

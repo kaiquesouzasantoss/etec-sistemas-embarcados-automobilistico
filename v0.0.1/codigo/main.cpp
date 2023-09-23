@@ -1,6 +1,6 @@
 #include <Ultrasonic.h>
 
-const int TRIGGER = 13, ECHO = 12, BUZZER = 10, LED_ESQUERDA = 9, LED_DIREITA = 8, MOTOR_A1 = 7, MOTOR_A2 = 6, MOTOR_B1 = 5, MOTOR_B2 = 4, FAROL = 3;
+const int TRIGGER = 10, ECHO = 11, BUZZER = 9, LED_ESQUERDA = 8, LED_DIREITA = 7, MOTOR_A1 = 6, MOTOR_A2 = 5, MOTOR_B1 = 4, MOTOR_B2 = 3, FAROL = 2;
 const int velocidade = 255;
 int obstaculos = 0;
 
@@ -22,15 +22,13 @@ void setup() {
 
 void loop() {
     double obstaculo = ultrasonic.read();
-
-    if (obstaculo <= 10) {
-        atras();
+    if (obstaculo <= 10) { 
         busina();
-        direita();
-    } else if(obstaculo > 10 && obstaculo <= 20) {
-        esquerda();
+        direita();  
+    } else if(obstaculo > 10 && obstaculo <=20){
+          esquerda();
     }
-    
+
     frente();
 }
 

@@ -2,15 +2,15 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="420mm"
+   width="484mm"
    height="297mm"
-   viewBox="0 0 420 297"
+   viewBox="0 0 484 297"
    version="1.1"
    id="svg300"
    xml:space="preserve"
    sodipodi:docname="modelo.svg"
    inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
-   inkscape:export-filename="Carrinho2_0_\chassi 4WD.png"
+   inkscape:export-filename="teste.svg"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -28,14 +28,14 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="0.31622395"
-     inkscape:cx="1460.9899"
-     inkscape:cy="687.80369"
+     inkscape:cx="585.02843"
+     inkscape:cy="855.40643"
      inkscape:window-width="1366"
      inkscape:window-height="705"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g1708"
+     inkscape:current-layer="layer1"
      showguides="true"><inkscape:grid
        type="xygrid"
        id="grid2445"
@@ -146,4 +146,20 @@
          id="path6"
          cx="137.30371"
          cy="153.23416"
-         r="3.8352926" /></g></g></svg>
+         r="3.8352926" /></g><path
+       style="opacity:0;fill-opacity:0;stroke:#000000;stroke-width:0.179057"
+       d="m -230.46948,-227.78783 h 49.82094 v 35.38134 h -49.82094 z"
+       transform="scale(-1)"
+       id="rect1" /><path
+       style="opacity:0;fill-opacity:0;stroke:#000000;stroke-width:0.179057"
+       d="m -231.41223,-117.04393 h 49.82094 v 35.38134 h -49.82094 z"
+       transform="scale(-1)"
+       id="rect1-9" /><g
+       id="g7"
+       transform="translate(-16.933338,7.9375004)"><path
+         style="opacity:0;fill-opacity:0;stroke:#000000;stroke-width:0.262701"
+         d="M 478.17279,116.09994 H 376.72151 V 66.098057 h 101.45128 z"
+         id="rect2" /><path
+         style="opacity:0;fill-opacity:0;stroke:#000000;stroke-width:0.264583"
+         d="m 381.59555,70.99601 h 91.70319 v 7.099601 h -91.70319 z"
+         id="rect3" /></g></g></svg>

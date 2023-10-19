@@ -2,7 +2,6 @@
 
 const int TRIGGER = 10, ECHO = 11, BUZZER = 9, LED_ESQUERDA = 8, LED_DIREITA = 7, MOTOR_A1 = 6, MOTOR_A2 = 5, MOTOR_B1 = 9, MOTOR_B2 = 3, FAROL = 2;
 const int velocidade = 150;
-int obstaculos = 0;
 
 Ultrasonic ultrasonic(TRIGGER, ECHO);
 
@@ -68,11 +67,6 @@ void para() {
     motor(0,0,0,0);
 }
 
-void cavaloPau() {
-    motor(1,0,0,0);
-    delay(5000);
-}
-
 /* FAROL */
 
 void farol() {
@@ -107,16 +101,8 @@ void busina() {
 /* MOTOR */
 
 void motor(int motorA1, int motorA2, int motorB1, int motorB2) {
-    //digitalWrite(MOTOR_A1, motorA1);
-    //digitalWrite(MOTOR_A2, motorA2);
-    //digitalWrite(MOTOR_B1, motorB1);
-    //digitalWrite(MOTOR_B2, motorB2);
-
     analogWrite(MOTOR_A1, motorA1);
     analogWrite(MOTOR_A2, motorA2);
     analogWrite(MOTOR_B1, motorB1);
     analogWrite(MOTOR_B2, motorB2);
-    
-
-    obstaculos += 1;
 }

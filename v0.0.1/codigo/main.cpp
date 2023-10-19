@@ -1,7 +1,7 @@
 #include <Ultrasonic.h>
 
-const int TRIGGER = 10, ECHO = 11, BUZZER = 9, LED_ESQUERDA = 8, LED_DIREITA = 7, MOTOR_A1 = 6, MOTOR_A2 = 5, MOTOR_B1 = 4, MOTOR_B2 = 3, FAROL = 2;
-const int velocidade = 255;
+const int TRIGGER = 10, ECHO = 11, BUZZER = 9, LED_ESQUERDA = 8, LED_DIREITA = 7, MOTOR_A1 = 6, MOTOR_A2 = 5, MOTOR_B1 = 9, MOTOR_B2 = 3, FAROL = 2;
+const int velocidade = 150;
 int obstaculos = 0;
 
 Ultrasonic ultrasonic(TRIGGER, ECHO);
@@ -22,45 +22,45 @@ void setup() {
 
 void loop() {
     double obstaculo = ultrasonic.read();
-    if (obstaculo <= 10) { 
-        busina();
+    if (obstaculo <= 8) { 
         direita();  
-    } else if(obstaculo > 10 && obstaculo <=20){
-          esquerda();
-    }
+    } 
 
     frente();
-}
-
-void verifica_obstaculo() {
-    if(obstaculos == 10) {
-        cavaloPau();
-        obstaculos = 0;
-    } 
 }
 
 /* MOVIMENTACAO */
 
 void direita() {
     seta(LED_DIREITA);
-    motor(1,0,0,0);
-    delay(1000);
+    motor(255,0,0,0);
+    delay(1200);
+    resetSeta(LED_DIREITA);
+}
+
+void direita_diferente() {
+    para();
+    seta(LED_DIREITA);
+    motor(velocidade,0,0,0);
+    delay(50);
     resetSeta(LED_DIREITA);
 }
 
 void esquerda() {
     seta(LED_ESQUERDA);
-    motor(0,0,1,0);
+    motor(0,0,255,0);
     delay(1000);
     resetSeta(LED_ESQUERDA);
 }
 
 void frente() {
-    motor(0,1,0,1);
+    motor(0,velocidade,0,velocidade);
+    //delay(100);
+    //direita_diferente();
 }
 
 void atras() {
-    motor(1,0,1,0);
+    motor(velocidade,0,velocidade,0);
     delay(1000);
 }
 
@@ -107,10 +107,16 @@ void busina() {
 /* MOTOR */
 
 void motor(int motorA1, int motorA2, int motorB1, int motorB2) {
-    digitalWrite(MOTOR_A1, motorA1);
-    digitalWrite(MOTOR_A2, motorA2);
-    digitalWrite(MOTOR_B1, motorB1);
-    digitalWrite(MOTOR_B2, motorB2);
+    //digitalWrite(MOTOR_A1, motorA1);
+    //digitalWrite(MOTOR_A2, motorA2);
+    //digitalWrite(MOTOR_B1, motorB1);
+    //digitalWrite(MOTOR_B2, motorB2);
+
+    analogWrite(MOTOR_A1, motorA1);
+    analogWrite(MOTOR_A2, motorA2);
+    analogWrite(MOTOR_B1, motorB1);
+    analogWrite(MOTOR_B2, motorB2);
+    
 
     obstaculos += 1;
 }

@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="210mm"
+   width="420mm"
    height="297mm"
-   viewBox="0 0 210 297"
+   viewBox="0 0 420 297"
    version="1.1"
    id="svg300"
    xml:space="preserve"
@@ -27,9 +27,9 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="0.4472082"
-     inkscape:cx="1100.1587"
-     inkscape:cy="658.52997"
+     inkscape:zoom="0.31622395"
+     inkscape:cx="1460.9899"
+     inkscape:cy="687.80369"
      inkscape:window-width="1366"
      inkscape:window-height="705"
      inkscape:window-x="-8"
@@ -48,11 +48,11 @@
      id="defs297"><marker
        id="DistanceX"
        orient="auto"
-       refX="0.0"
-       refY="0.0"
+       refX="0"
+       refY="0"
        style="overflow:visible"><path
-         d="M 3,-3 L -3,3 M 0,-5 L  0,5"
-         style="stroke:#000000; stroke-width:0.5"
+         d="M 3,-3 -3,3 M 0,-5 V 5"
+         style="stroke:#000000;stroke-width:0.5"
          id="path1" /></marker><pattern
        id="Hatch"
        patternUnits="userSpaceOnUse"

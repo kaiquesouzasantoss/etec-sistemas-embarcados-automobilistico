@@ -28,12 +28,12 @@ void setup() {
 void loop() {
     if(bluetooth.available()) {
         while(bluetooth.available()) {
-            executa_comando(bluetooth.read());
+            executa_comando(bluetooth.readString());
         }
     }
 }
 
-void executa_comando(char comando) {
+void executa_comando(String comando) {
     if(comando == "R") {
          direita();
     } else if(comando == "L") {

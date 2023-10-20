@@ -10,8 +10,7 @@ BluetoothSerial bluetooth;
 
 /*  VARIAVEIS */
 
-const int BUZZER = 9, LED_ESQUERDA = 8, LED_DIREITA = 7, MOTOR_A1 = 6, MOTOR_A2 = 5, MOTOR_B1 = 9, MOTOR_B2 = 3, RE = 2;
-const int velocidade = 255, velocidade_variante = 100;
+const int BUZZER = 14, LED_ESQUERDA = 25, LED_DIREITA = 26, MOTOR_A1 = 34, MOTOR_A2 = 35, MOTOR_B1 = 32, MOTOR_B2 = 33, RE = 27;
 
 void setup() {
     pinMode(MOTOR_A1, OUTPUT);
@@ -26,11 +25,16 @@ void setup() {
 }
 
 void loop() {
-    if(bluetooth.available()) {
-        while(bluetooth.available()) {
-            executa_comando(bluetooth.readString());
-        }
-    }
+    frente();
+    delay(5000);
+    atras();
+    delay(5000);
+    para();
+    delay(5000);
+    esquerda();
+    delay(5000);
+    direita();
+    delay(5000);
 }
 
 void executa_comando(String comando) {
@@ -52,14 +56,14 @@ void executa_comando(String comando) {
 void direita() {
     // R
     ascende_led(LED_DIREITA);
-    motor(velocidade,0,0,0);
+    motor(1,0,0,0);
     apaga_led(LED_DIREITA);
 }
 
 void esquerda() {
     // L
     ascende_led(LED_ESQUERDA);
-    motor(0,0,velocidade,0);
+    motor(0,0,1,0);
     apaga_led(LED_ESQUERDA);
 }
 

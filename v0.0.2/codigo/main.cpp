@@ -87,7 +87,7 @@ void cavaloPau() {
 /* FAROL */
 
 void re() {
-    ascende_led(RE, HIGH);
+    ascende_led(RE);
 }
 
 void reset_seta() {

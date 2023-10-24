@@ -1,16 +1,7 @@
-#include "BluetoothSerial.h"
-
-/* BLUETOOTH */
-
-#if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)
-#error Bluetooth is not enabled!Please run `make menuconfig`to and enable it
-#endif
-
-BluetoothSerial bluetooth;
 
 /*  VARIAVEIS */
 
-const int BUZZER = 14, LED_ESQUERDA = 25, LED_DIREITA = 26, MOTOR_A1 = 34, MOTOR_A2 = 35, MOTOR_B1 = 32, MOTOR_B2 = 33, RE = 27;
+const int BUZZER = 0, LED_ESQUERDA = 0, LED_DIREITA = 0, MOTOR_A1 = 12, MOTOR_A2 = 14, MOTOR_B1 = 27, MOTOR_B2 = 26, RE = 0;
 
 void setup() {
     pinMode(MOTOR_A1, OUTPUT);

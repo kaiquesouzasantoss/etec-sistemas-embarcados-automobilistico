@@ -1,7 +1,16 @@
+#include "BluetoothSerial.h"
+
+/* BLUETOOTH */
+
+#if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)
+#error Bluetooth is not enabled!Please run `make menuconfig`to and enable it
+#endif
+
+BluetoothSerial bluetooth;
 
 /*  VARIAVEIS */
 
-const int BUZZER = 0, LED_ESQUERDA = 0, LED_DIREITA = 0, MOTOR_A1 = 12, MOTOR_A2 = 14, MOTOR_B1 = 27, MOTOR_B2 = 26, RE = 0;
+const int BUZZER = 0, LED_PATIFERO = 0, LED_ESQUERDA = 0, LED_DIREITA = 0, LED_RE = 0, MOTOR_A1 = 12, MOTOR_A2 = 14, MOTOR_B1 = 27, MOTOR_B2 = 26;
 
 void setup() {
     pinMode(MOTOR_A1, OUTPUT);
@@ -9,24 +18,22 @@ void setup() {
     pinMode(MOTOR_B1, OUTPUT);
     pinMode(MOTOR_B2, OUTPUT);
 
+    pinMode(LED_PATIFERO, OUTPUT);
     pinMode(LED_DIREITA, OUTPUT);
     pinMode(LED_ESQUERDA, OUTPUT);
+    pinMode(LED_RE, OUTPUT);
     pinMode(BUZZER, OUTPUT);
-    pinMode(RE, OUTPUT);
+
+    ascende_led(LED_PATIFERO);
 }
 
 void loop() {
-    frente();
-    delay(5000);
-    atras();
-    delay(5000);
-    para();
-    delay(5000);
-    esquerda();
-    delay(5000);
-    direita();
-    delay(5000);
-}
+    if(bluetooth.available()) {
+      while(bluetooth.available()) {
+        executa_comando(bluetooth.readString());
+      }
+    }
+} 
 
 void executa_comando(String comando) {
     if(comando == "R") {
@@ -82,13 +89,13 @@ void cavaloPau() {
 /* FAROL */
 
 void re() {
-    ascende_led(RE);
+    ascende_led(LED_RE);
 }
 
 void reset_seta() {
     apaga_led(LED_DIREITA);
     apaga_led(LED_ESQUERDA);
-    apaga_led(RE);
+    apaga_led(LED_RE);
 }
 
 void ascende_led(int led) {

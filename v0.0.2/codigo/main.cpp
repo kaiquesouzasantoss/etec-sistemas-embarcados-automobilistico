@@ -25,14 +25,12 @@ void setup() {
     pinMode(BUZZER, OUTPUT);
 
     ascende_led(LED_PATIFERO);
+
+    bluetooth.begin("PATIFERO");
 }
 
 void loop() {
-    if(bluetooth.available()) {
-      while(bluetooth.available()) {
-        executa_comando(bluetooth.readString());
-      }
-    }
+    frente();
 } 
 
 void executa_comando(String comando) {

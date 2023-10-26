@@ -10,7 +10,7 @@ BluetoothSerial bluetooth;
 
 /*  VARIAVEIS */
 
-const int BUZZER = 0, LED_PATIFERO = 0, LED_ESQUERDA = 0, LED_DIREITA = 0, LED_RE = 0, MOTOR_A1 = 12, MOTOR_A2 = 14, MOTOR_B1 = 27, MOTOR_B2 = 26;
+const int BUZZER = 12, LED_PATIFERO = 13, LED_ESQUERDA = 25, LED_DIREITA = 26, LED_RE = 27, MOTOR_A1 = 34, MOTOR_A2 = 35, MOTOR_B1 = 32, MOTOR_B2 = 33;
 
 void setup() {
     pinMode(MOTOR_A1, OUTPUT);

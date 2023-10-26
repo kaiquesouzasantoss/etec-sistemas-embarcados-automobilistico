@@ -10,7 +10,7 @@ BluetoothSerial bluetooth;
 
 /*  VARIAVEIS */
 
-const int BUZZER = 12, LED_PATIFERO = 13, LED_ESQUERDA = 25, LED_DIREITA = 26, LED_RE = 27, MOTOR_A1 = 34, MOTOR_A2 = 35, MOTOR_B1 = 32, MOTOR_B2 = 33;
+const int BUZZER = 12, LED_PATIFERO = 13, LED_ESQUERDA = 25, LED_DIREITA = 26, LED_RE = 27, MOTOR_A1 = 2, MOTOR_A2 = 3, MOTOR_B1 = 4, MOTOR_B2 = 5;
 
 void setup() {
     pinMode(MOTOR_A1, OUTPUT);
@@ -25,19 +25,16 @@ void setup() {
     pinMode(BUZZER, OUTPUT);
 
     ascende_led(LED_PATIFERO);
-
     bluetooth.begin("PATIFERO");
-    Serial.begin(9600);
 }
 
 void loop() {
   if(bluetooth.available()) {
       while(bluetooth.available()) {
-        delay(15);
         String comando = bluetooth.readString();
         executa_comando(comando);
       }
-    }
+  }
 } 
 
 void executa_comando(String comando) {

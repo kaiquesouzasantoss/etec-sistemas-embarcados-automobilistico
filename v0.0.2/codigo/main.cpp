@@ -33,8 +33,9 @@ void setup() {
 void loop() {
   if(bluetooth.available()) {
       while(bluetooth.available()) {
-        Serial.println(bluetooth.readString());
-        executa_comando(bluetooth.readString());
+        delay(15);
+        String comando = bluetooth.readString();
+        executa_comando(comando);
       }
     }
 } 
@@ -51,6 +52,10 @@ void executa_comando(String comando) {
     } else if(comando == "S") {
         para();
     } 
+
+    if(comando == "V") {
+      busina();
+    }
 }
 
 /* MOVIMENTACAO */

@@ -27,10 +27,16 @@ void setup() {
     ascende_led(LED_PATIFERO);
 
     bluetooth.begin("PATIFERO");
+    Serial.begin(9600);
 }
 
 void loop() {
-    frente();
+  if(bluetooth.available()) {
+      while(bluetooth.available()) {
+        Serial.println(bluetooth.readString());
+        executa_comando(bluetooth.readString());
+      }
+    }
 } 
 
 void executa_comando(String comando) {

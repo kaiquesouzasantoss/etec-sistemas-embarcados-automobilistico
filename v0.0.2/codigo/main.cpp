@@ -10,7 +10,7 @@ BluetoothSerial bluetooth;
 
 /*  VARIAVEIS */
 
-const int BUZZER = 12, LED_PATIFERO = 13, LED_ESQUERDA = 25, LED_DIREITA = 26, LED_RE = 27, MOTOR_A1 = 2, MOTOR_A2 = 3, MOTOR_B1 = 4, MOTOR_B2 = 5;
+const int BUZZER = 0, LED_PATIFERO = 0, LED_ESQUERDA = 0, LED_DIREITA = 0, LED_RE = 0, MOTOR_A1 = 23, MOTOR_A2 = 22, MOTOR_B1 = 2, MOTOR_B2 = 3;
 
 void setup() {
     pinMode(MOTOR_A1, OUTPUT);
@@ -25,6 +25,7 @@ void setup() {
     pinMode(BUZZER, OUTPUT);
 
     ascende_led(LED_PATIFERO);
+    Serial.begin(9600);
     bluetooth.begin("PATIFERO");
 }
 
@@ -33,6 +34,7 @@ void loop() {
       while(bluetooth.available()) {
         String comando = bluetooth.readString();
         executa_comando(comando);
+        delay(10);
       }
   }
 } 
@@ -60,25 +62,25 @@ void executa_comando(String comando) {
 void direita() {
     // R
     ascende_led(LED_DIREITA);
-    motor(1,0,0,0);
+    motor(0,0,1,0);
     apaga_led(LED_DIREITA);
 }
 
 void esquerda() {
     // L
     ascende_led(LED_ESQUERDA);
-    motor(0,0,1,0);
+    motor(1,0,0,0);
     apaga_led(LED_ESQUERDA);
 }
 
 void frente() {
     // F
-    motor(0,1,0,1);
+    motor(1,0,1,0);
 }
 
 void atras() {
     // B
-    motor(1,0,1,0);
+    motor(0,1,0,1);
     re();
 }
 
@@ -86,12 +88,6 @@ void para() {
     // S
     motor(0,0,0,0);
 }
-
-void cavaloPau() {
-    motor(1,0,0,0);
-    delay(5000);
-}
-
 /* FAROL */
 
 void re() {

@@ -38,7 +38,6 @@ void loop() {
       }
   }
 } 
-
 void executa_comando(String comando) {
     if(comando == "R") {
          direita();
@@ -75,12 +74,12 @@ void esquerda() {
 
 void frente() {
     // F
-    motor(1,0,1,0);
+    motor(0,1,1,0);
 }
 
 void atras() {
     // B
-    motor(0,1,0,1);
+    motor(1,0,0,1);
     re();
 }
 

@@ -10,7 +10,7 @@ BluetoothSerial bluetooth;
 
 /*  VARIAVEIS */
 
-const int BUZZER = 0, LED_PATIFERO = 0, LED_ESQUERDA = 0, LED_DIREITA = 0, LED_RE = 0, MOTOR_A1 = 23, MOTOR_A2 = 22, MOTOR_B1 = 2, MOTOR_B2 = 3;
+const int BUZZER = 0, LED_PATIFERO = 0, LED_ESQUERDA = 0, LED_DIREITA = 0, LED_RE = 0, ARMAMENTO = 0, MOTOR_A1 = 23, MOTOR_A2 = 22, MOTOR_B1 = 2, MOTOR_B2 = 3;
 
 void setup() {
     pinMode(MOTOR_A1, OUTPUT);
@@ -18,14 +18,16 @@ void setup() {
     pinMode(MOTOR_B1, OUTPUT);
     pinMode(MOTOR_B2, OUTPUT);
 
+    pinMode(ARMAMENTO, OUTPUT);
+
     pinMode(LED_PATIFERO, OUTPUT);
     pinMode(LED_DIREITA, OUTPUT);
     pinMode(LED_ESQUERDA, OUTPUT);
     pinMode(LED_RE, OUTPUT);
+
     pinMode(BUZZER, OUTPUT);
 
     ascende_led(LED_PATIFERO);
-    Serial.begin(9600);
     bluetooth.begin("PATIFERO");
 }
 
@@ -34,7 +36,6 @@ void loop() {
       while(bluetooth.available()) {
         String comando = bluetooth.readString();
         executa_comando(comando);
-        delay(10);
       }
   }
 } 
@@ -53,6 +54,7 @@ void executa_comando(String comando) {
 
     if(comando == "V") {
       busina();
+      ataque();
     }
 }
 
@@ -87,6 +89,7 @@ void para() {
     // S
     motor(0,0,0,0);
 }
+
 /* FAROL */
 
 void re() {
@@ -117,6 +120,14 @@ void busina() {
     delay(500);
     tone(BUZZER, 700);
     noTone(BUZZER);
+}
+
+/* ARMAMENTO */
+
+void ataque() {
+    digitalWrite(ARMAMENTO, HIGH);
+    delay(500);
+    digitalWrite(ARMAMENTO, LOW);
 }
 
 /* MOTOR */

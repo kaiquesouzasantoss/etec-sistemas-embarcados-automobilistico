@@ -27,6 +27,7 @@ void setup() {
     pinMode(BUZZER, OUTPUT);
 
     bluetooth.begin("PATIFERO");
+    Serial.begin(9600);
     para();
 }
 
@@ -36,8 +37,6 @@ void loop() {
             executa_comando(bluetooth.readString());
         }
     }
-
-    delay(10);
 }
 
 void executa_comando(String comando) {
@@ -50,6 +49,8 @@ void executa_comando(String comando) {
     } else if (comando == "B") {
         atras();
     } else if (comando == "S") {
+        para();
+    } else {
         para();
     }
 

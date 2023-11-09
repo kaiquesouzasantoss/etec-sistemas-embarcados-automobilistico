@@ -32,8 +32,9 @@ void setup() {
 
 void loop() {
     while (bluetooth.available()) {
-        String comando = bluetooth.readString();
-        executa_comando(comando);
+        if(bluetooth.connected()) {
+            executa_comando(bluetooth.readString());
+        }
     }
 
     delay(10);

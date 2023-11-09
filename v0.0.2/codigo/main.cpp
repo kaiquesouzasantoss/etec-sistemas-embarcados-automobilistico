@@ -10,7 +10,12 @@ BluetoothSerial bluetooth;
 
 /*  VARIAVEIS */
 
-const int BUZZER = 0, LED_PATIFERO = 0, LED_ESQUERDA = 0, LED_DIREITA = 0, LED_RE = 0, ARMAMENTO = 0, MOTOR_A1 = 23, MOTOR_A2 = 22, MOTOR_B1 = 2, MOTOR_B2 = 3;
+const int BUZZER = 19,
+    ARMAMENTO = 18,
+    MOTOR_A1 = 23,
+    MOTOR_A2 = 22,
+    MOTOR_B1 = 2,
+    MOTOR_B2 = 3;
 
 void setup() {
     pinMode(MOTOR_A1, OUTPUT);
@@ -19,42 +24,37 @@ void setup() {
     pinMode(MOTOR_B2, OUTPUT);
 
     pinMode(ARMAMENTO, OUTPUT);
-
-    pinMode(LED_PATIFERO, OUTPUT);
-    pinMode(LED_DIREITA, OUTPUT);
-    pinMode(LED_ESQUERDA, OUTPUT);
-    pinMode(LED_RE, OUTPUT);
-
     pinMode(BUZZER, OUTPUT);
 
-    ascende_led(LED_PATIFERO);
     bluetooth.begin("PATIFERO");
+    para();
 }
 
 void loop() {
-  if(bluetooth.available()) {
-      while(bluetooth.available()) {
+    while (bluetooth.available()) {
         String comando = bluetooth.readString();
         executa_comando(comando);
-      }
-  }
-} 
-void executa_comando(String comando) {
-    if(comando == "R") {
-         direita();
-    } else if(comando == "L") {
-        esquerda();
-    } else if(comando == "F") {
-        frente();
-    } else if(comando == "B") {
-        atras();
-    } else if(comando == "S") {
-        para();
-    } 
+    }
 
-    if(comando == "V") {
-      busina();
-      ataque();
+    delay(10);
+}
+
+void executa_comando(String comando) {
+    if (comando == "R") {
+        direita();
+    } else if (comando == "L") {
+        esquerda();
+    } else if (comando == "F") {
+        frente();
+    } else if (comando == "B") {
+        atras();
+    } else if (comando == "S") {
+        para();
+    }
+
+    if (comando == "V") {
+        busina();
+        ataque();
     }
 }
 
@@ -62,53 +62,27 @@ void executa_comando(String comando) {
 
 void direita() {
     // R
-    ascende_led(LED_DIREITA);
-    motor(0,0,1,0);
-    apaga_led(LED_DIREITA);
+    motor(0, 0, 1, 0);
 }
 
 void esquerda() {
     // L
-    ascende_led(LED_ESQUERDA);
-    motor(1,0,0,0);
-    apaga_led(LED_ESQUERDA);
+    motor(1, 0, 0, 0);
 }
 
 void frente() {
     // F
-    motor(0,1,1,0);
+    motor(0, 1, 1, 0);
 }
 
 void atras() {
     // B
-    motor(1,0,0,1);
-    re();
+    motor(1, 0, 0, 1);
 }
 
 void para() {
     // S
-    motor(0,0,0,0);
-}
-
-/* FAROL */
-
-void re() {
-    ascende_led(LED_RE);
-}
-
-void reset_seta() {
-    apaga_led(LED_DIREITA);
-    apaga_led(LED_ESQUERDA);
-    apaga_led(LED_RE);
-}
-
-void ascende_led(int led) {
-    reset_seta(); 
-    digitalWrite(led, HIGH);
-}
-
-void apaga_led(int led) {
-    digitalWrite(led, LOW);
+    motor(0, 0, 0, 0);
 }
 
 /* BUSINA */

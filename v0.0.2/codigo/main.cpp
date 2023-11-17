@@ -11,7 +11,6 @@ BluetoothSerial bluetooth;
 /*  VARIAVEIS */
 
 const int BUZZER = 19,
-    ARMAMENTO = 18,
     MOTOR_A1 = 23,
     MOTOR_A2 = 22,
     MOTOR_B1 = 2,
@@ -23,7 +22,6 @@ void setup() {
     pinMode(MOTOR_B1, OUTPUT);
     pinMode(MOTOR_B2, OUTPUT);
 
-    pinMode(ARMAMENTO, OUTPUT);
     pinMode(BUZZER, OUTPUT);
 
     bluetooth.begin("PATIFERO");
@@ -33,9 +31,7 @@ void setup() {
 
 void loop() {
     while (bluetooth.available()) {
-        if(bluetooth.connected()) {
-            executa_comando(bluetooth.readString());
-        }
+      executa_comando(bluetooth.readString());
     }
 }
 
@@ -56,7 +52,8 @@ void executa_comando(String comando) {
 
     if (comando == "V") {
         busina();
-        ataque();
+    } else {
+        busina_low();
     }
 }
 
@@ -92,18 +89,10 @@ void para() {
 void busina() {
     // V
     tone(BUZZER, 700);
-    noTone(BUZZER);
-    delay(500);
-    tone(BUZZER, 700);
-    noTone(BUZZER);
 }
 
-/* ARMAMENTO */
-
-void ataque() {
-    digitalWrite(ARMAMENTO, HIGH);
-    delay(500);
-    digitalWrite(ARMAMENTO, LOW);
+void busina_low() {
+    noTone(BUZZER);
 }
 
 /* MOTOR */

@@ -1,4 +1,4 @@
-<h1 align=center>🚗 ETEC CIDADE TIRADENTES - SISTEMAS EMBARCADOS - AUTOMOBILISMO</h1>
+<h1 align=center>SISTEMAS EMBARCADOS - AUTOMOBILISMO</h1>
 
 <p align="center">
   <img src="etec.png" width="500">
